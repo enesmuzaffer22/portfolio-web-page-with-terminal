@@ -5,7 +5,7 @@ import Footer from "../components/footer/Footer";
 
 function Layout() {
   return (
-    <div>
+    <div className="flex flex-col justify-between h-screen">
       <Navbar />
       <Outlet />
       <Footer />
