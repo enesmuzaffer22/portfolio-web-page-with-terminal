@@ -16,3 +16,8 @@
 @theme {
   --font-stretch-pro: "Stretch Pro", "sans-serif";
 }
+
+::selection {
+  background-color: white;
+  color: black;
+}
