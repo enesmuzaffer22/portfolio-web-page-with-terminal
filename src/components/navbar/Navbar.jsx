@@ -40,17 +40,17 @@ function Navbar() {
     <div>
       <div
         className={`${
-          isOpen ? "h-screen absolute w-full flex-col z-10" : ""
+          isOpen ? "h-screen absolute w-full flex-col z-10 border-none" : ""
         } flex justify-between p-12 bg-black border-b-1 border-white`}
       >
         <div className="md:w-auto h-auto flex justify-between w-full">
-          <img src={logo} alt="MY" width={78} height={34} />
+          <img src={logo} alt="MY" className="w-auto h-[28px] sm:h-[34px]" />
 
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-[24px] text-white md:hidden"
           >
-            <i className="bi bi-list"></i>
+            <i className={`${isOpen ? "bi bi-x-lg" : "bi bi-list"}`}></i>
           </button>
         </div>
 
@@ -64,7 +64,9 @@ function Navbar() {
           {links.map((link, index) => (
             <Link key={index} to={link.path} className={linkStyle(link.path)}>
               {link.label}
-              {getIcon(link.path) && <i className={getIcon(link.path)}></i>}
+              {getIcon(link.path) && (
+                <i className={`hidden md:block ${getIcon(link.path)}`}></i>
+              )}
             </Link>
           ))}
         </div>
