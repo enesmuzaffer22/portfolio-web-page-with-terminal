@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FooterLinks from "../footer-links/FooterLinks";
 
 function Footer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +9,7 @@ function Footer() {
       <div
         className={`${
           isOpen ? "flex" : "hidden"
-        } social-container flex-col absolute top-0 left-0 w-screen h-screen bg-red-500 z-20`}
+        } social-container flex-col absolute top-0 left-0 w-screen h-screen bg-black z-20`}
       >
         <div className="flex w-full p-12 justify-end z-30">
           <button
@@ -20,67 +21,13 @@ function Footer() {
         </div>
 
         <div className="social-links flex flex-col items-center gap-8 h-screen absolute w-full justify-center">
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            INSTAGRAM{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            LINKEDIN{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            BEHANCE{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            GITHUB{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
+          <FooterLinks />
         </div>
       </div>
 
       <div className="footer-container flex justify-center sm:flex lg:justify-between items-center p-12 bg-black border-t-1 border-white">
         <div className="links-container hidden sm:flex items-center gap-8">
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            INSTAGRAM{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            LINKEDIN{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            BEHANCE{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
-          <a
-            href=""
-            className="text-white flex items-center gap-2 group opacity-75 hover:opacity-100 transition ease-in duration-100"
-          >
-            GITHUB{" "}
-            <i className="bi bi-arrow-up-right-circle text-[16px] text-white group-hover:rotate-45 transition ease-in duration-100"></i>
-          </a>
+          <FooterLinks />
         </div>
 
         <button className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 hover:bg-white hover:text-black transition duration-100 lg:flex">
