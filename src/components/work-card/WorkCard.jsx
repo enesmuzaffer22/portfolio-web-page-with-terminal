@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-function WorkCard() {
+function WorkCard(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -8,13 +9,17 @@ function WorkCard() {
       onClick={() => {
         setIsOpen(!isOpen);
       }}
-      className="p-6 border border-white w-[1280px] min-h-[128px] justify-center flex flex-col items-center rounded-lg transition-all duration-300 ease-in-out hover:opacity-80 cursor-pointer"
+      className="p-6 border border-white w-[95%] w-max-[1280px] min-h-[72px] justify-center flex flex-col items-center rounded-lg transition-all duration-300 ease-in-out hover:opacity-80 cursor-pointer"
     >
       <div className="card-header flex items-center justify-between w-full">
         <div className="card-header-content flex items-center gap-6">
-          <img src="" alt="LOGO" className="text-white h-12 w-12" />
+          <img
+            src={props.logo_url}
+            alt="LOGO"
+            className="text-white h-auto w-12"
+          />
           <h3 className="text-white text-[20px]">
-            COMPANY NAME | <b>JOB TITLE</b>
+            {props.company_name} | <b>{props.position}</b>
           </h3>
         </div>
 
@@ -31,18 +36,15 @@ function WorkCard() {
         }`}
       >
         <div className="card-content transform transition-all duration-300 ease-in-out">
-          <p className="text-[16px] text-white">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. A aut vel,
-            repudiandae nostrum reprehenderit odio recusandae architecto modi
-            eligendi nesciunt? Ad, optio. Soluta exercitationem harum doloribus,
-            possimus repellat perferendis quae.Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. A aut vel, repudiandae nostrum
-            reprehenderit odio recusandae architecto modi eligendi nesciunt? Ad,
-            optio. Soluta exercitationem harum doloribus, possimus repellat
-            perferendis quae. Soluta exercitationem harum doloribus, possimus
-            repellat perferendis quae. Soluta exercitationem harum doloribus,
-            possimus repellat perferendis quae.
-          </p>
+          <p className="text-[16px] text-white">{props.description}</p>
+          {props.end_date === null && (
+            <p className="text-[16px] text-white">Since {props.start_date}</p>
+          )}
+          {props.end_date !== null && (
+            <p className="text-[16px] text-white">
+              {props.start_date} - {props.end_date}
+            </p>
+          )}
         </div>
       </div>
     </div>
