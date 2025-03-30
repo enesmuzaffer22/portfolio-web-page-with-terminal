@@ -1,0 +1,20 @@
+.scrollbarCustom {
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px; // Scrollbar genişliği
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; // Scrollbar arka plan rengi (Tailwind: bg-gray-200)
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: white; // Scrollbar rengi (Tailwind: bg-gray-500)
+    border-radius: 4px;
+    &:hover {
+      background: #bbbbbb; // Hover efekti (Tailwind: bg-gray-600)
+    }
+  }
+}
