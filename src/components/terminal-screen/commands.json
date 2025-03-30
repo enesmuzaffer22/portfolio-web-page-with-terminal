@@ -1,0 +1,35 @@
+{
+  "welcomeMessage": "Welcome to MUXO SHELL! Type 'muxo help' to see available commands.",
+  "commands": {
+    "muxo help": {
+      "response": "Available Commands:\n\n  muxo meet [subcommand]    Connect with your interests.\n    ├─ interest       # Topics you like\n    ├─ p-languages    # Programming languages you know\n    ├─ design         # Your design experience\n    ├─ hobbies        # Your hobbies\n\n  muxo work [subcommand]    Explore your professional side.\n    ├─ now           # Your current work\n    ├─ past          # Your past experiences\n\n  muxo social             # Connect socially\n\n  clear              # Clear the terminal\n\n  muxo exit             # Exit the shell"
+    },
+    "muxo meet interest": {
+      "response": "I am interested in software development and graphic design. I try to stay as active as possible in these two fields. I am constantly developing projects or participating in projects."
+    },
+    "muxo meet p-languages": {
+      "response": "I am currently actively writing HTML, CSS, and JS. As a JS framework, I use React. Additionally, I write Angular at my workplace. For CSS, I use Tailwind, but sometimes I also use Bootstrap. I also use SASS when needed."
+    },
+    "muxo meet design": {
+      "response": "In graphic design, I mainly focus on digital design. I actively use Photoshop and Illustrator. Additionally, I actively use Figma for the applications I'm developing. By the end of the day, I have a strong proficiency with these three tools."
+    },
+    "muxo meet hobbies": {
+      "response": "I work on graphic design projects as a hobby, such as posters, jersey designs, or logos. Besides that, I enjoy playing computer games and writing. I also closely follow the Counter Strike e-sports scene and try to watch the matches whenever I can."
+    },
+    "muxo work now": {
+      "response": "I am currently working in the following positions:\n\n* Mirketgiller - Vice Chairman of the Board | Since September 2022\n* Istanbul University Department of IT - Frontend Developer Intern | Since December 2024"
+    },
+    "muxo work past": {
+      "response": "I am currently working in the following positions:\n\n* GameCircle - Frontend Developer Intern | July 2024 - August 2024\n* Neutec Pharma - Graphic Design Intern | March 2024 - June 2024\n* GameCircle - Graphic Designer | June 2023 - March 2024\n* Sunny Electronics - Frontend Developer Intern | July 2023 - August 2023\n* Neutec Pharma - IT Support Intern | June 2022 - August 2022"
+    },
+    "muxo social": {
+      "response": "Linktree: https://linktr.ee/enesmuzaffer"
+    },
+    "clear": {
+      "response": ""
+    },
+    "muxo exit": {
+      "response": "Exiting MUXO SHELL..."
+    }
+  }
+}
