@@ -1,8 +1,12 @@
 import { useState } from "react";
 import FooterLinks from "../footer-links/FooterLinks";
 
-function Footer() {
+function Footer(props) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const shellOpen = () => {
+    props.toggleShell(true);
+  };
 
   return (
     <div>
@@ -30,7 +34,10 @@ function Footer() {
           <FooterLinks />
         </div>
 
-        <button className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 hover:bg-white hover:text-black transition duration-100 lg:flex">
+        <button
+          onClick={shellOpen}
+          className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 hover:bg-white hover:text-black transition duration-100 lg:flex"
+        >
           SWITCH TO DEV MODE <i className="bi bi-code-slash"></i>
         </button>
 

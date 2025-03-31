@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import commandsData from "./commands.json";
 
-function TerminalScreen() {
+function TerminalScreen(props) {
   const [inputValue, setInputValue] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [currentOutput, setCurrentOutput] = useState(null);
   const terminalOutputRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,6 +23,20 @@ function TerminalScreen() {
         terminalOutputRef.current.scrollHeight;
     }
   }, [currentOutput]);
+
+  // Terminal container'a tıklandığında input alanına focus ver
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  // Terminal görünür olduğunda input'a focus ver
+  useEffect(() => {
+    if (props.isShellOpenProp && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [props.isShellOpenProp]);
 
   const handleCommandSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +60,12 @@ function TerminalScreen() {
       }
     }
 
+    if (command === "muxo exit") {
+      props.setIsShellOpen(false);
+      setInputValue("");
+      return;
+    }
+
     setCurrentOutput(response);
     setInputValue("");
   };
@@ -66,7 +87,12 @@ Type 'muxo help' to see available commands.
 `;
 
   return (
-    <div className="terminal-container bg-black absolute h-screen w-full z-10 flex flex-col">
+    <div
+      className={`${
+        props.isShellOpenProp ? "flex" : "hidden"
+      } terminal-container bg-black absolute h-screen w-full z-10 flex-col`}
+      onClick={handleTerminalClick}
+    >
       <div
         className="terminal-output flex-grow overflow-y-auto p-4"
         ref={terminalOutputRef}
@@ -104,6 +130,8 @@ Type 'muxo help' to see available commands.
             onChange={(e) => setInputValue(e.target.value)}
             className="font-ubuntu-mono! bg-transparent border-none outline-none focus:ring-0 text-white caret-transparent w-full"
             autoFocus
+            ref={inputRef}
+            autoComplete="off"
           />
           {/* Eğer input boşsa, yanıp sönen "_" göster */}
           {inputValue === "" && (
