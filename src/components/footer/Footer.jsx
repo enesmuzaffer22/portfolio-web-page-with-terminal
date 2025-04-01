@@ -15,7 +15,7 @@ function Footer(props) {
           isOpen ? "flex" : "hidden"
         } social-container flex-col absolute top-0 left-0 w-screen h-screen bg-black z-20`}
       >
-        <div className="flex w-full p-12 justify-end z-30">
+        <div className="flex w-full p-8 sm:p-12 justify-end z-30">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white text-[24px]"
@@ -29,7 +29,7 @@ function Footer(props) {
         </div>
       </div>
 
-      <div className="footer-container flex justify-center sm:flex lg:justify-between items-center p-12 bg-black border-t-1 border-white">
+      <div className="footer-container flex justify-center sm:flex lg:justify-between items-center p-8 sm:p-12 bg-black border-t-1 border-white">
         <div className="links-container hidden sm:flex items-center gap-8">
           <FooterLinks />
         </div>
@@ -38,7 +38,7 @@ function Footer(props) {
           onClick={shellOpen}
           className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 hover:bg-white hover:text-black transition duration-100 lg:flex"
         >
-          SWITCH TO DEV MODE <i className="bi bi-code-slash"></i>
+          SWITCH TO SHELL <i className="bi bi-code-slash"></i>
         </button>
 
         <button

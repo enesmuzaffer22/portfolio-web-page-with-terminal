@@ -41,7 +41,7 @@ function Navbar() {
       <div
         className={`${
           isOpen ? "h-screen absolute w-full flex-col z-10 border-none" : ""
-        } flex justify-between p-12 bg-black border-b-1 border-white`}
+        } flex justify-between p-8 sm:p-12 bg-black border-b-1 border-white`}
       >
         <div className="md:w-auto h-auto flex justify-between w-full">
           <img src={logo} alt="MY" className="w-auto h-[28px] sm:h-[34px]" />
