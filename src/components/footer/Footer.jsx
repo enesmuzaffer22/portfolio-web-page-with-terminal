@@ -36,7 +36,7 @@ function Footer(props) {
 
         <button
           onClick={shellOpen}
-          className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 hover:bg-white hover:text-black transition duration-100 lg:flex"
+          className="text-white border-white rounded-lg border bg-transparent px-6 py-3 text-[16px] hidden items-center gap-3 lg:flex"
         >
           SWITCH TO SHELL <i className="bi bi-code-slash"></i>
         </button>
