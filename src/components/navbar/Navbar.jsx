@@ -4,8 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import style from "./style.module.scss";
 
 function Navbar() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname } = location;
   const [isOpen, setIsOpen] = useState(false);
+
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const linkStyle = (path) =>
     pathname === path
@@ -18,7 +24,7 @@ function Navbar() {
     { path: "/workin-on", label: "WORKIN' ON" },
   ];
 
-  // iconStyle fonksiyonunu güncelle
+  // getIcon function remains the same
   const getIcon = (path) => {
     if (pathname === path) {
       return ""; // aktif sayfada ikon gösterilmesin
@@ -36,12 +42,15 @@ function Navbar() {
     return ""; // default
   };
 
+  // Handle link click to close the mobile menu
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
       <div
-        className={`${
-          isOpen ? "h-screen absolute w-full flex-col z-10 border-none" : ""
-        } flex justify-between p-8 sm:p-12 bg-black border-b-1 border-white`}
+        className={`flex justify-between p-8 sm:p-12 bg-black bg-opacity-50 backdrop-blur-sm border-b-1 border-white z-10 relative`}
       >
         <div className="md:w-auto h-auto flex justify-between w-full">
           <img src={logo} alt="MY" className="w-auto h-[28px] sm:h-[34px]" />
@@ -54,15 +63,14 @@ function Navbar() {
           </button>
         </div>
 
-        <div
-          className={`${
-            isOpen
-              ? "flex flex-col relative w-full h-full justify-center"
-              : "hidden"
-          } links gap-8 items-center md:flex`}
-        >
+        <div className="links gap-8 items-center hidden md:flex">
           {links.map((link, index) => (
-            <Link key={index} to={link.path} className={linkStyle(link.path)}>
+            <Link
+              key={index}
+              to={link.path}
+              className={linkStyle(link.path)}
+              onClick={handleLinkClick}
+            >
               {link.label}
               {getIcon(link.path) && (
                 <i className={`hidden md:block ${getIcon(link.path)}`}></i>
@@ -70,6 +78,49 @@ function Navbar() {
             </Link>
           ))}
         </div>
+      </div>
+
+      {/* Mobile menu with animation */}
+      <div
+        className={`absolute top-0 left-0 w-full bg-black bg-opacity-90 backdrop-blur-sm z-20 transition-all duration-300 ease-in-out overflow-hidden flex flex-col items-center justify-center
+          ${isOpen ? "h-screen opacity-100" : "h-0 opacity-0"}`}
+        style={{
+          transformOrigin: "top",
+          transform: isOpen ? "scaleY(1)" : "scaleY(0)",
+          visibility: isOpen ? "visible" : "hidden",
+        }}
+      >
+        {isOpen && (
+          <>
+            {/* Add close button to the top right of mobile menu */}
+            <div className="absolute top-0 right-0 p-8 sm:p-12">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-[24px] text-white"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-8 items-center">
+              {links.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.path}
+                  className={`${linkStyle(link.path)} text-[24px]`}
+                  onClick={handleLinkClick}
+                  style={{
+                    animation: `fadeInUp 0.5s ease forwards`,
+                    animationDelay: `${0.2 + index * 0.1}s`,
+                    opacity: 0,
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
