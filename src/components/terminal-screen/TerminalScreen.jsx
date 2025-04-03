@@ -90,8 +90,9 @@ Type 'muxo help' to see available commands.
     <div
       className={`${
         props.isShellOpenProp ? "flex" : "hidden"
-      } terminal-container bg-black absolute h-screen w-full z-10 flex-col`}
+      } terminal-container bg-black absolute w-full z-10 flex-col`}
       onClick={handleTerminalClick}
+      style={{ height: "calc(var(--vh, 1vh) * 100)" }}
     >
       <div
         className="terminal-output flex-grow overflow-y-auto p-4"

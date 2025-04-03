@@ -8,6 +8,11 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Custom viewport height property */
+:root {
+  --vh: 1vh;
+}
+
 @font-face {
   font-family: Stretch Pro;
   font-display: swap;
@@ -22,6 +27,12 @@
 ::selection {
   background-color: white;
   color: black;
+}
+
+/* Dinamik viewport yüksekliği kullanımı için helper class */
+.h-screen-dynamic {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Animation for elements sliding up */

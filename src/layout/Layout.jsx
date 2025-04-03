@@ -19,7 +19,7 @@ function Layout() {
         isShellOpenProp={isShellOpen}
         setIsShellOpen={setIsShellOpen}
       />
-      <div className="flex flex-col justify-between h-screen relative z-1">
+      <div className="flex flex-col justify-between h-screen-dynamic relative z-1">
         <Navbar />
         <Outlet />
         <Footer toggleShell={handleShellOpen} />

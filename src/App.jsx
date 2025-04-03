@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RouterList } from "./route/Router";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Layout from "./layout/Layout";
 import AnimatedCursor from "react-animated-cursor";
 
 function App() {
+  // Viewport yüksekliğini ayarlayan fonksiyon
+  useEffect(() => {
+    // Viewport yüksekliğini doğru şekilde ayarla
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    // İlk yüklemede ve boyut değişikliğinde çalıştır
+    setViewportHeight();
+    window.addEventListener("resize", setViewportHeight);
+
+    return () => window.removeEventListener("resize", setViewportHeight);
+  }, []);
+
   return (
     <>
       <AnimatedCursor

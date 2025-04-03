@@ -18,6 +18,7 @@ function Footer(props) {
           visibility: isOpen ? "visible" : "hidden",
           transformOrigin: "bottom",
           transform: isOpen ? "scaleY(1)" : "scaleY(0)",
+          height: "calc(var(--vh, 1vh) * 100)",
         }}
       >
         {/* Close button at the top right */}
