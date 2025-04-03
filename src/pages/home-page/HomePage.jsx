@@ -2,7 +2,7 @@ import React from "react";
 
 function HomePage() {
   return (
-    <div className="bg-black text-white h-full justify-center items-center flex flex-col gap-4">
+    <div className="bg-transparent text-white h-full justify-center items-center flex flex-col gap-4">
       <p className="text-[16px] md:text-[24px] text-center">
         Jr. Front End Developer
       </p>

@@ -10,26 +10,35 @@ function Footer(props) {
 
   return (
     <div>
+      {/* Social links container with animation from bottom to top */}
       <div
-        className={`${
-          isOpen ? "flex" : "hidden"
-        } social-container flex-col absolute top-0 left-0 w-screen h-screen bg-black z-20`}
+        className={`fixed inset-0 bg-black transition-all duration-300 ease-in-out overflow-hidden z-20 flex flex-col`}
+        style={{
+          opacity: isOpen ? 1 : 0,
+          visibility: isOpen ? "visible" : "hidden",
+          transformOrigin: "bottom",
+          transform: isOpen ? "scaleY(1)" : "scaleY(0)",
+        }}
       >
-        <div className="flex w-full p-8 sm:p-12 justify-end z-30">
+        {/* Close button at the top right */}
+        <div className="absolute top-0 right-0 p-8 sm:p-12">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen(false)}
             className="text-white text-[24px]"
           >
             <i className="bi bi-x-lg"></i>
           </button>
         </div>
 
-        <div className="social-links flex flex-col items-center gap-8 h-screen absolute w-full justify-center">
-          <FooterLinks />
+        {/* Centered social links */}
+        <div className="flex-grow flex items-center justify-center">
+          <div className="flex flex-col items-center gap-8">
+            {isOpen && <FooterLinks animateUp={true} />}
+          </div>
         </div>
       </div>
 
-      <div className="footer-container flex justify-center sm:flex lg:justify-between items-center p-8 sm:p-12 bg-black border-t-1 border-white">
+      <div className="footer-container flex justify-center sm:flex lg:justify-between items-center p-8 sm:p-12 bg-black bg-opacity-50 backdrop-blur-sm border-t-1 border-white relative z-10">
         <div className="links-container hidden sm:flex items-center gap-8">
           <FooterLinks />
         </div>

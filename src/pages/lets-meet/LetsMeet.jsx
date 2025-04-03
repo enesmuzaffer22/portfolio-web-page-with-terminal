@@ -3,7 +3,7 @@ import LetsMeetImg from "../../assets/lets-meet-img.jpg";
 
 function LetsMeet() {
   return (
-    <div className="bg-black flex h-full w-full justify-center items-center">
+    <div className="bg-transparent flex h-full w-full justify-center items-center">
       <div className="flex items-center gap-16 w-[80%] xl:w-[1000px]">
         <img src={LetsMeetImg} alt="" className="rounded-lg hidden lg:flex" />
         <p className="text-white text-[14px] sm:text-[16px] md:text-[18px] xl:text-[20px]">

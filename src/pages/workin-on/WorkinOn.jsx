@@ -29,7 +29,7 @@ function WorkinOn() {
   };
 
   return (
-    <div className="bg-black h-full overflow-hidden w-full flex items-center justify-center flex-col gap-6">
+    <div className="bg-transparent h-full overflow-hidden w-full flex items-center justify-center flex-col gap-6">
       <div
         className={`${style.scrollbarCustom} pb-1 flex flex-col gap-6 w-[80%] h-[80%] overflow-scroll overflow-x-hidden`}
       >
