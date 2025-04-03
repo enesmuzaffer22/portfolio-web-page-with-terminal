@@ -82,9 +82,10 @@ function Navbar() {
 
       {/* Mobile menu with animation */}
       <div
-        className={`absolute top-0 left-0 w-full bg-black bg-opacity-90 backdrop-blur-sm z-20 transition-all duration-300 ease-in-out overflow-hidden flex flex-col items-center justify-center
-          ${isOpen ? "h-screen opacity-100" : "h-0 opacity-0"}`}
+        className={`absolute top-0 left-0 w-full bg-black bg-opacity-90 backdrop-blur-sm z-20 transition-all duration-300 ease-in-out overflow-hidden flex flex-col items-center justify-center`}
         style={{
+          height: isOpen ? "calc(var(--vh, 1vh) * 100)" : "0",
+          opacity: isOpen ? "100" : "0",
           transformOrigin: "top",
           transform: isOpen ? "scaleY(1)" : "scaleY(0)",
           visibility: isOpen ? "visible" : "hidden",

@@ -68,7 +68,7 @@ const ParticlesBackground = () => {
     const init = () => {
       particlesArray = [];
       // Number of particles depends on the screen size
-      const particleCount = (canvas.width * canvas.height) / 9000;
+      const particleCount = (canvas.width * canvas.height) / 5000;
       for (let i = 0; i < particleCount; i++) {
         particlesArray.push(new Particle());
       }
