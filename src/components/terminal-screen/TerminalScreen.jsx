@@ -5,6 +5,8 @@ function TerminalScreen(props) {
   const [inputValue, setInputValue] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [currentOutput, setCurrentOutput] = useState(null);
+  const [commandHistory, setCommandHistory] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
   const terminalOutputRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -38,12 +40,46 @@ function TerminalScreen(props) {
     }
   }, [props.isShellOpenProp]);
 
+  // Handle arrow keys for command history
+  const handleKeyDown = (e) => {
+    // Up arrow for previous commands
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (
+        commandHistory.length > 0 &&
+        historyIndex < commandHistory.length - 1
+      ) {
+        const newIndex = historyIndex + 1;
+        setHistoryIndex(newIndex);
+        setInputValue(commandHistory[commandHistory.length - 1 - newIndex]);
+      }
+    }
+    // Down arrow for newer commands
+    else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        const newIndex = historyIndex - 1;
+        setHistoryIndex(newIndex);
+        setInputValue(commandHistory[commandHistory.length - 1 - newIndex]);
+      } else if (historyIndex === 0) {
+        // When reaching the newest command, clear the input
+        setHistoryIndex(-1);
+        setInputValue("");
+      }
+    }
+  };
+
   const handleCommandSubmit = (e) => {
     e.preventDefault();
 
     if (!inputValue.trim()) return;
 
     const command = inputValue.trim();
+
+    // Add command to history
+    setCommandHistory((prev) => [...prev, command]);
+    // Reset history index after submitting command
+    setHistoryIndex(-1);
 
     // Process command
     let response =
@@ -129,6 +165,7 @@ Type 'muxo help' to see available commands.
             id="shell-input"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
             className="font-ubuntu-mono! bg-transparent border-none outline-none focus:ring-0 text-white caret-transparent w-full"
             autoFocus
             ref={inputRef}
