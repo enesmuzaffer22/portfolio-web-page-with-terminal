@@ -9,7 +9,7 @@ function WorkCard(props) {
       onClick={() => {
         setIsOpen(!isOpen);
       }}
-      className="work-card-container bg-black p-6 border border-white w-[97%] w-max-[1280px] min-h-[72px] justify-center flex flex-col items-center rounded-lg transition-all duration-300 ease-in-out hover:opacity-80"
+      className="work-card-container bg-black p-6 border border-white w-[94%] sm:w-[97%] w-max-[1280px] min-h-[72px] justify-center flex flex-col items-center rounded-lg transition-all duration-300 ease-in-out hover:opacity-80"
     >
       <div className="card-header flex items-center gap-6 justify-between w-full">
         <div className="card-header-content flex items-center gap-6">

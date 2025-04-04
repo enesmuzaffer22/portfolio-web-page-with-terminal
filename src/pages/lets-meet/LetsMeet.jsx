@@ -9,8 +9,12 @@ function LetsMeet() {
         <p className="text-white text-[14px] sm:text-[16px] md:text-[18px] xl:text-[20px]">
           Hello, I’m Muzaffer, a final-year Computer Engineering student at
           Istanbul University of Health and Technology. I’m pursuing a career as
-          a Front-End Developer and continuously improving my skills in this
-          field. I actively work with{" "}
+          a{" "}
+          <b>
+            <i>Front-End Developer</i>
+          </b>{" "}
+          and continuously improving my skills in this field. I actively work
+          with{" "}
           <b>
             <i>JavaScript, React, Angular, Tailwind, and SASS</i>
           </b>{" "}
