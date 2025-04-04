@@ -28,6 +28,26 @@ function WorkinOn() {
     return date.toLocaleDateString("en-US", options);
   };
 
+  // Sorting function to order cards by date
+  const sortCardsByDate = (cards, isCurrentJob) => {
+    return [...cards]
+      .filter((card) => card.job_status === isCurrentJob)
+      .sort((a, b) => {
+        // For current jobs, sort by start date (most recent first)
+        if (isCurrentJob) {
+          return new Date(b.start_date) - new Date(a.start_date);
+        }
+        // For past jobs, sort by end date (most recent first)
+        else {
+          return new Date(b.end_date || 0) - new Date(a.end_date || 0);
+        }
+      });
+  };
+
+  // Get sorted arrays of current and past jobs
+  const currentJobs = sortCardsByDate(cardData, true);
+  const pastJobs = sortCardsByDate(cardData, false);
+
   return (
     <div className="bg-transparent h-full overflow-hidden w-full flex items-center justify-center flex-col gap-6">
       <div
@@ -38,20 +58,17 @@ function WorkinOn() {
             <b>WORKIN' ON</b>
           </h3>
 
-          {cardData.map(
-            (data) =>
-              data.job_status === true && (
-                <WorkCard
-                  key={data.id}
-                  description={data.description}
-                  company_name={data.name}
-                  position={data.position}
-                  start_date={formatDate(data.start_date)}
-                  end_date={formatDate(data.end_date)}
-                  logo_url={data.logo_url}
-                />
-              )
-          )}
+          {currentJobs.map((data) => (
+            <WorkCard
+              key={data.id}
+              description={data.description}
+              company_name={data.name}
+              position={data.position}
+              start_date={formatDate(data.start_date)}
+              end_date={formatDate(data.end_date)}
+              logo_url={data.logo_url}
+            />
+          ))}
         </div>
 
         <div className="worked-on-cards-container flex flex-col gap-6">
@@ -59,20 +76,17 @@ function WorkinOn() {
             <b>WORKED ON</b>
           </h3>
 
-          {cardData.map(
-            (data) =>
-              data.job_status === false && (
-                <WorkCard
-                  key={data.id}
-                  description={data.description}
-                  company_name={data.name}
-                  position={data.position}
-                  start_date={formatDate(data.start_date)}
-                  end_date={formatDate(data.end_date)}
-                  logo_url={data.logo_url}
-                />
-              )
-          )}
+          {pastJobs.map((data) => (
+            <WorkCard
+              key={data.id}
+              description={data.description}
+              company_name={data.name}
+              position={data.position}
+              start_date={formatDate(data.start_date)}
+              end_date={formatDate(data.end_date)}
+              logo_url={data.logo_url}
+            />
+          ))}
         </div>
       </div>
     </div>
