@@ -1,5 +1,5 @@
 # 🚀 Muzaffer Yıldırım - Portfolio Web Page
-This project is the personal portfolio website of **Muzaffer Yıldırım**. Built using **Vite + React**, it features a modern and minimalist design.
+This project is the personal portfolio website of **Muzaffer Yıldırım**. Built using **Vite + React**, it features a modern and minimalist design. ***There is also an executable terminal within the project.***
 
 ## 🛠 Technologies Used
 - ⚛ **React 19**: Component-based, fast, and scalable UI development.
